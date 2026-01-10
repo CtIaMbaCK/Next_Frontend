@@ -8,6 +8,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 export const metadata: Metadata = {
   title: "BetterUS",
   description: "Kết nối tình nguyện viên với người cần giúp đơ",
+
+  icons: {
+    icon: '/images/logo.svg',
+  },
 };
 
 export default function RootLayout({

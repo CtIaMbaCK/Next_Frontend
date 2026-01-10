@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation'; // 2. Import hook lấy đường dẫn
+import Image from "next/image";
 
 export default function Sidebar() {
   const pathname = usePathname(); // 3. Lấy đường dẫn hiện tại (ví dụ: /sosicalorg/dashboard)
 
-  // 4. Định nghĩa danh sách menu tại đây cho gọn
+  // 4. Định nghĩa danh sách menu tại đây
   const menuItems = [
     { 
       name: 'Dashboard', 
@@ -53,23 +54,21 @@ export default function Sidebar() {
 
   return (
     <aside className="flex w-64 flex-col bg-white text-gray-800 border-r border-gray-200 h-screen sticky top-0">
+      <Link href={"/socialorg/dashboard"}>
       <div className="flex h-16 shrink-0 items-center gap-3 px-6 border-b border-gray-200">
         <div className="text-primary size-7">
-          <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <g clipPath="url(#clip0_6_535)">
-              <path clipRule="evenodd" d="M47.2426 24L24 47.2426L0.757355 24L24 0.757355L47.2426 24ZM12.2426 21H35.7574L24 9.24264L12.2426 21Z" fill="currentColor" fillRule="evenodd" />
-            </g>
-            <defs>
-              <clipPath id="clip0_6_535">
-                <rect fill="white" height="48" width="48" />
-              </clipPath>
-            </defs>
-          </svg>
+          {/* LOGO */}
+                  <Image 
+                    src="/images/logo.svg" 
+                    alt="BetterUS Logo" 
+                    width={28} 
+                    height={28}
+                    className="object-contain" // Giữ tỉ lệ ảnh
+                  />
         </div>
-        <Link href={"/socialorg/dashboard"}>
         <h2 className="text-gray-900 text-lg font-bold leading-tight tracking-[-0.015em]">BetterUS</h2>
-        </Link>
       </div>
+      </Link>
 
       <nav className="flex flex-col flex-1 p-4 overflow-y-auto">
         <div className="flex flex-col gap-1">
