@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// Font Inter nên được cấu hình ở Root Layout, nhưng nếu bạn muốn override ở đây thì import,
+// tuy nhiên class font-display nên được kế thừa từ cha.
 import HomeHeader from "@/components/HomePageHeader";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "BetterUS",
@@ -15,24 +14,17 @@ export default function HomePageLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
-      <head>
-         {/* Link CDN cho icon Google Material Symbols */}
-         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-      </head>
-      <body className={`${inter.variable} font-display bg-gray-100`}>
-
-          {/* Phần nội dung chính bên phải */}
-          <div className="flex flex-col flex-1 h-screen overflow-hidden">
-            {/* Header cố định ở trên cùng của phần nội dung */}
-            <HomeHeader />
-            
-            {/* Nội dung thay đổi (Children) */}
-            <main className="flex-1 overflow-y-auto p-6 bg-gray-100">
-              {children}
-            </main>
-        </div>
-      </body>
-    </html>
+    // THAY ĐỔI: Sử dụng div thay vì html/body. 
+    // Thêm các class bg-gray-100 vào đây để giữ style nền.
+    <div className="flex flex-col h-screen w-full overflow-hidden bg-gray-100 font-display">
+        
+        {/* Header cố định ở trên cùng */}
+        <HomeHeader />
+        
+        {/* Nội dung thay đổi (Children) */}
+        <main className="flex-1 overflow-y-auto p-6 bg-gray-100">
+          {children}
+        </main>
+    </div>
   );
 }

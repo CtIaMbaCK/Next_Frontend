@@ -93,6 +93,7 @@ export default function NeedyPage() {
       <UserTable 
         data={filteredUsers} 
         onToggleBan={handleToggleBan} 
+        basePath="/socialorg/volunteers" // <-- Truyền đường dẫn gốc của trang này vào
       />
     </div>
   );

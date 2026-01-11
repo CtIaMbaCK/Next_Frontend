@@ -75,7 +75,11 @@ export default function Sidebar() {
           {/* 5. Dùng vòng lặp map để render menu */}
           {menuItems.map((item) => {
             // Kiểm tra xem link này có đang active không
-            const isActive = pathname === item.href;
+            // Logic: 
+            // 1. pathname === item.href: Đúng khi ở trang chính xác (vd: /bficiary)
+            // 2. pathname.startsWith(`${item.href}/`): Đúng khi ở trang con (vd: /bficiary/create)
+            // Dấu "/" ở cuối để tránh nhầm lẫn giữa /users và /users-settings
+            const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
 
             return (
               <Link
